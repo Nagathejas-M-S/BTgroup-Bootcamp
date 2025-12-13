@@ -16,7 +16,7 @@ def input_number():
         except ValueError:
             print("Invalid input. Please enter a valid integer.")
             
-# Main function to execute the program  
+# Main block to execute the program
 if __name__ == "__main__":
     num = input_number()
     result = is_even_or_odd(num)

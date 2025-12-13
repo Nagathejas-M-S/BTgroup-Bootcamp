@@ -54,7 +54,7 @@ def display_report_card(name, total, average, student_class):
     print(f"Average Score: {average:.2f}")
     print(f"Class Secured: {student_class}")
 
-# Main function to execute the program
+# Main block to execute the program
 if __name__ == "__main__":
     name, score1, score2, score3 = input_student_details()
     total, average, student_class = calculate_report_card(score1, score2, score3)

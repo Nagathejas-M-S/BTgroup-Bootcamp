@@ -20,7 +20,7 @@ def input_numbers():
         num3 = get_number("Enter the third number: ") # Typecasting input string to float
         return num1, num2, num3
             
-# Main function to execute the program
+# Main block to execute the program
 if __name__ == "__main__":
     num1, num2, num3 = input_numbers()
     largest = find_largest(num1, num2, num3)

@@ -31,7 +31,7 @@ def get_discount_rate(prompt):
         except ValueError:
             print("Invalid input. Please enter a numeric value.")
 
-
+# Main block to execute the program
 if __name__ == "__main__":
     # Get total amount from user (>= 0)
     total_amount = get_non_negative_float("Enter the total amount: ")

@@ -131,7 +131,7 @@ def print_revenue_report(revenue_data):
     print(f"Total Revenue from all crops: Rs. {revenue_data['total_revenue']:.2f}")
     print(f"Revenue from Chemical-Free Farming after 11 months: Rs. {revenue_data['chemical_free_revenue']:.2f}")
 
-# Main function to execute the program
+# Main block to execute the program
 if __name__ == "__main__":
     revenue_data = compute_revenue()
     print_revenue_report(revenue_data)

@@ -398,7 +398,7 @@ def generate_and_print_detailed_report(employee_details, taxable_income, total_t
 # -------------------------------------------------------------
 
 
-# Main function to execute the program
+# Main block to execute the program
 if __name__ == "__main__":
     
     

@@ -21,7 +21,7 @@ def input_year():
         except ValueError:
             print("Invalid input. Please enter a valid year.")
             
-# Main function to execute the program
+# Main block to execute the program
 if __name__ == "__main__":
     year = input_year()
     print(is_leap_year(year))

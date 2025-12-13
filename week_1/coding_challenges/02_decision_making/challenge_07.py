@@ -22,7 +22,7 @@ def input_name_salary():
         except ValueError:
             print("Invalid input. Please enter a valid salary amount.")
    
-# Main function to execute the program         
+# Main block to execute the program  
 if __name__ == "__main__":
     name, salary = input_name_salary()
     result = check_tax(name, salary)

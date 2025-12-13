@@ -12,7 +12,7 @@ def get_valid_input(prompt):
         except ValueError:
             print("Invalid input. Please enter a numeric value.")
 
-# 
+# Main block to execute the program
 if __name__ == "__main__":
     # Input: Two numbers from the user
     num1 = get_valid_input("Enter the first number: ")
