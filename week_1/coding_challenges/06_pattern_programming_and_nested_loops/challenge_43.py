@@ -31,3 +31,5 @@ if __name__ == "__main__":
     user_value = get_user_input()
     whole, fraction = separate_whole_fraction(user_value)
     display_separated_values(whole, fraction)
+    
+    

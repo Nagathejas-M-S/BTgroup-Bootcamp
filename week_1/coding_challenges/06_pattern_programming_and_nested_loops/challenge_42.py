@@ -23,3 +23,5 @@ if __name__ == "__main__":
             print("Invalid input. Please enter a valid positive integer.")
 # Call the function to display the series
     display_series(N)
+    
+    

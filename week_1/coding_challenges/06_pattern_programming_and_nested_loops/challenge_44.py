@@ -30,3 +30,5 @@ if __name__ == "__main__":
     user_value = get_user_input()
     reversed_value = reverse_number(user_value)
     print(f"Reversed number: {reversed_value}")
+    
+    
