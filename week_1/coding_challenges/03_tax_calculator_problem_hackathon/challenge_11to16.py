@@ -172,18 +172,18 @@ def input_employee_details():
 
     # Basic Salary: Positive number, max ₹1,00,00,000.
     basic_salary = get_valid_input(
-        "Enter Basic Monthly Salary: ",
+        "Enter Basic Monthly Salary (₹): ",
         float,
         lambda x: 0 < x <= 10000000,
-        "Basic Salary must be a positive number (max 1,00,00,000)."
+        "Basic Salary must be a positive number (max ₹1,00,00,000)."
     )
 
     # Special Allowances: Non-negative, max ₹1,00,00,000.
     special_allowances = get_valid_input(
-        "Enter Special Allowances (Monthly): ",
+        "Enter Special Allowances (Monthly) (₹): ",
         float,
         lambda x: 0 <= x <= 10000000,
-        "Special Allowances must be non-negative (max 1,00,00,000)."
+        "Special Allowances must be non-negative (max ₹1,00,00,000)."
     )
 
     # Bonus Percentage: Numeric value, 0–100.
@@ -325,7 +325,7 @@ def display_tax_breakdown(tax_breakdown):
     print()
     print(f"{'Tax before rebate:':<30} ₹{tax_breakdown['tax_before_rebate']:,.2f}")
     if tax_breakdown.get("rebate_applied"):
-        print(f"{'Section 87A rebate:':<30} -₹{tax_breakdown['rebate_amount']:,.2f}  (Full rebate applied since income ≤ ₹700,000)")
+        print(f"{'Section 87A rebate:':<30} -₹{tax_breakdown['rebate_amount']:,.2f}  (Full rebate applied since income ≤ ₹7,00,000)")
     else:
         print(f"{'Section 87A rebate:':<30} ₹0.00")
     print(f"{'Tax after rebate:':<30} ₹{tax_breakdown['tax_after_rebate']:,.2f}")
