@@ -1,0 +1,65 @@
+# Coding Challenge 49: Level 4: Search the given element from the array 
+
+# Function to take number of elements input
+def input_number_of_elements():
+    while True:
+        try:
+            n = int(input("Enter the size of the array (positive integer N): "))
+            if n < 1:
+                print("Please enter a positive integer greater than 0.")
+                continue
+            return n
+        except ValueError:
+            print("Invalid input. Please enter a valid positive integer.")
+
+# Function to accept n and store elements into an array
+def store_elements_in_array(n):
+    elements = []
+    for i in range(n):
+        while True:
+            try:
+                element = int(input(f"Enter element {i + 1}: "))
+                elements.append(element)
+                break
+            except ValueError:
+                print("Invalid input. Please enter a valid integer.")
+    return elements
+
+# Function to display the elements of the array
+def display_array_elements(elements):
+    print(len(array_elements), "elements have been stored in the array.")
+    print("The elements in the array are:", array_elements)
+    
+
+# Function to search for a given element in the array
+def search_in_array_elements(elements):
+    while True:
+        try:
+            target = int(input("Enter the element to search in the array: "))
+            break
+        except ValueError:
+            print("Invalid input. Please enter a valid integer.")
+            
+    if target in elements:  
+        print(f"The element {target} is found in the array at index {elements.index(target)}.")
+    else:
+        print(f"The element {target} is not found in the array.")
+            
+   
+# Main block to execute the program
+if __name__ == "__main__":
+    # Input number of elements
+    N = input_number_of_elements()
+    
+    # Call the function to store elements in the array
+    array_elements = store_elements_in_array(N)
+    
+    # Display the stored elements
+    display_array_elements(array_elements)
+    
+    print() 
+    
+    # Calculate and display the sum of all elements in the array
+    search_in_array_elements(array_elements)
+    
+ 
