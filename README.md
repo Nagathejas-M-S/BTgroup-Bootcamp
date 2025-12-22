@@ -1,1 +1,1 @@
-# BTgroup-Bootcamp
+# BTGroup-Bootcamp
