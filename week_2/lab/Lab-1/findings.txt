@@ -1,0 +1,33 @@
+1. The Core Issue: Encapsulation Violation
+
+The lab is designed to demonstrate the difference between direct field 
+access (bad practice) and property access (good practice).
+
+AccountManager1 (The "Bad" Way):
+
+It accesses the protected variables directly (e.g., acc._acc_no).
+Result: It bypasses the business logic defined in the Account class.
+The Account Number is stored as just "004701" (missing the "ICI" prefix).
+The Balance is displayed as just 45000.0 (missing the interest calculation).
+
+
+AccountManager2 (The "Good" Way):
+
+It uses the public properties (e.g., acc.acc_no).
+Result: It triggers the business logic defined in the Account class.
+The setter adds "ICI", so the Account Number becomes "ICI004701".
+The getter calculates interest, so the Balance displayed includes the 8.5% interest.
+
+
+2.Execution Flow (program.py)
+The program runs both managers on the same Account object instance.
+
+Manager 1 runs: It sets the data "incorrectly" (raw values) and prints them.
+Manager 2 runs: It overwrites the data using the "correct" setters (adding the prefix) and
+prints the calculated balance.
+
+
+Conclusion
+This lab effectively demonstrates why you should use Properties (Getters/Setters)
+instead of accessing variables directly. By using AccountManager1, you lose data 
+integrity and business rules (like the bank code and interest calculation).

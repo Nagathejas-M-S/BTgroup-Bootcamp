@@ -1,0 +1,34 @@
+1. The Bug
+
+Error Observed: TypeError: can only concatenate str (not "NoneType") to str
+Cause: The fill_account_data method in AccountManager was empty (contained only 
+pass). As a result, the Account object's properties (acc_no, name, balance) 
+remained None. When display_account_data tried to concatenate acc.acc_no 
+(which was None) with the string "AccNo : ", the program crashed.
+
+
+2. The Fix
+
+Action Taken: Implemented the fill_account_data method in account_manager.py 
+to properly initialize the Account object using its property setters.
+Code Change:
+def fill_account_data(self, acc):
+    acc.acc_no = "004701"
+    acc.name = "Nitesh"
+    acc.balance = 45000.0
+
+
+3. Final Status
+
+The program now runs successfully.
+Output:
+Performing Account Transactions using AccManager...
+
+AccNo : ICI004701
+Name : Nitesh
+Balance : 48825.0
+
+Note: The balance is 48825.0 because the Account class logic adds 8.5% interest (45000 + 3825). 
+The Account Number has the "ICI"
+prefix added by the setter.
+
