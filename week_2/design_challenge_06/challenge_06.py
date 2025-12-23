@@ -14,72 +14,96 @@ from abc import ABC, abstractmethod
 
 class Ship(ABC):
     def __init__(self, ship_id, name):
-        self.ship_id = ship_id
-        self.name = name
-        self.bookings = []
+        self.__ship_id = ship_id
+        self.__name = name
+        self.__bookings = []
+
+    @property
+    def ship_id(self):
+        return self.__ship_id
+
+    @property
+    def name(self):
+        return self.__name
+
+    @property
+    def bookings(self):
+        return self.__bookings
 
     def add_booking(self, booking):
-        self.bookings.append(booking)
+        self.__bookings.append(booking)
 
     def get_total_amount(self):
-        return sum(booking.amount for booking in self.bookings)
+        return sum(booking.amount for booking in self.__bookings)
 
 
 class CruiseShip(Ship):
     def __init__(self, ship_id, name, route):
         super().__init__(ship_id, name)
-        self.route = route
+        self.__route = route
 
 class CargoShip(Ship):
     def __init__(self, ship_id, name, max_capacity):
         super().__init__(ship_id, name)
-        self.max_capacity = max_capacity
+        self.__max_capacity = max_capacity
 
 
 class Customer:
     def __init__(self, customer_id, name, contact):
-        self.customer_id = customer_id
-        self.name = name
-        self.contact = contact
+        self.__customer_id = customer_id
+        self.__name = name
+        self.__contact = contact
+
+    @property
+    def name(self):
+        return self.__name
 
     def __str__(self):
-        return f"{self.customer_id} - {self.name} ({self.contact})"
+        return f"{self.__customer_id} - {self.__name} ({self.__contact})"
 
 class Booking:
     def __init__(self, booking_id, customer, ship, amount):
-        self.booking_id = booking_id
-        self.customer = customer
-        self.ship = ship
-        self.amount = amount
+        self.__booking_id = booking_id
+        self.__customer = customer
+        self.__ship = ship
+        self.__amount = amount
 
         ship.add_booking(self)
 
+    @property
+    def amount(self):
+        return self.__amount
+
+    @property
+    def customer(self):
+        return self.__customer
+
 class MarineCompany:
     def __init__(self):
-        self.ships = []
-        self.bookings = []
+        self.__ships = []
+        self.__bookings = []
 
     def add_ship(self, ship):
-        self.ships.append(ship)
+        self.__ships.append(ship)
 
     def add_booking(self, booking):
-        self.bookings.append(booking)
+        self.__bookings.append(booking)
 
     # 1. Total amount collected
     def get_total_amount_collected(self):
-        return sum(booking.amount for booking in self.bookings)
+        return sum(booking.amount for booking in self.__bookings)
 
     # 2. Total amount for every ship
     def get_total_amount_per_ship(self):
         totals = {}
-        for ship in self.ships:
+        for ship in self.__ships:
             totals[ship.name] = ship.get_total_amount()
         return totals
 
     # 3. List all customer details for a particular cruise ship
     def get_customers_for_cruise_ship(self, ship_id):
         customers = []
-        for ship in self.ships:
+        for ship in self.__ships:
             if ship.ship_id == ship_id and isinstance(ship, CruiseShip):
                 for booking in ship.bookings:
                     customers.append(booking.customer)

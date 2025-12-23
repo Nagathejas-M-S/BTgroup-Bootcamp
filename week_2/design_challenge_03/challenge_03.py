@@ -13,57 +13,65 @@ Design the OO model for the above problem statement and implement the code to
 
 class Question:
     def __init__(self, question_id, text, category, topic, question_type):
-        self.question_id = question_id
-        self.text = text
-        self.category = category
-        self.topic = topic
-        self.question_type = question_type
+        self.__question_id = question_id
+        self.__text = text
+        self.__category = category
+        self.__topic = topic
+        self.__question_type = question_type
+        
+    @property
+    def topic(self):
+        return self.__topic
+
+    @property
+    def category(self):
+        return self.__category
         
     def display(self):
-        print(f"[{self.question_type}] {self.text}")
-        print(f"Category: {self.category}, Topic: {self.topic}")
+        print(f"[{self.__question_type}] {self.__text}")
+        print(f"Category: {self.__category}, Topic: {self.__topic}")
         
         
 class MCQQuestion(Question):
     def __init__(self, question_id, text, category, topic, options, correct_option):
         super().__init__(question_id, text, category, topic, "MCQ")
-        self.options = options
-        self.correct_option = correct_option
+        self.__options = options
+        self.__correct_option = correct_option
         
     def display(self):
         super().display()
-        for idx, option in enumerate(self.options, start=1):
+        for idx, option in enumerate(self.__options, start=1):
             print(f"{idx}. {option}")
             
             
 class ParagraphQuestion(Question):
     def __init__(self, question_id, text, category, topic,word_limit):
         super().__init__(question_id, text, category, topic, "Paragraph")
-        self.word_limit = word_limit
+        self.__word_limit = word_limit
         
     def display(self):
         super().display()
-        print(f"Word Limit: {self.word_limit}")
+        print(f"Word Limit: {self.__word_limit}")
         
         
 class ExamPortal:
     def __init__(self):
-        self.questions = []
+        self.__questions = []
         
     def add_question(self, question):
-        self.questions.append(question)
+        self.__questions.append(question)
      
     # 1. Find total number of questions 
     def get_total_questions(self):
-        return len(self.questions)
+        return len(self.__questions)
     
     # 2. List all questions belonging to a topic
     def get_questions_by_topic(self, topic):
-        return [q for q in self.questions if q.topic.lower() == topic.lower()]
+        return [q for q in self.__questions if q.topic.lower() == topic.lower()]
     
     # 3. List all questions belonging to a topic and category
     def get_questions_by_topic_and_category(self, topic, category):
-        return [q for q in self.questions if q.topic.lower() == topic.lower() and q.category.lower() == category.lower()]
+        return [q for q in self.__questions if q.topic.lower() == topic.lower() and q.category.lower() == category.lower()]
     
     
     

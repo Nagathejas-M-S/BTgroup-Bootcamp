@@ -12,27 +12,51 @@ Design the OO model for the above problem statement and implement the code to
 
 class MenuItem:
     def __init__(self,name,price):
-        self.name = name
-        self.price = price
+        self.__name = name
+        self.__price = price
+
+    @property
+    def name(self):
+        return self.__name
+
+    @property
+    def price(self):
+        return self.__price
         
 class CourseCategory:
     def __init__(self,name):
-        self.name = name
-        self.items = []
+        self.__name = name
+        self.__items = []
+
+    @property
+    def name(self):
+        return self.__name
+
+    @property
+    def items(self):
+        return self.__items
         
     def add_item(self,item):
-        self.items.append(item)
+        self.__items.append(item)
         
 class Menu:
     def __init__(self,name):
-        self.name = name
-        self.categories = []
+        self.__name = name
+        self.__categories = []
+
+    @property
+    def name(self):
+        return self.__name
+
+    @property
+    def categories(self):
+        return self.__categories
         
     def add_category(self,category):
-        self.categories.append(category)
+        self.__categories.append(category)
         
     def total_items(self):
-        return sum(len(category.items) for category in self.categories)
+        return sum(len(category.items) for category in self.__categories)
     
     def get_price(self, item):
         return item.price
@@ -46,27 +70,31 @@ class SpecialMenu(Menu):
     
 class Branch:
     def __init__(self,location):
-        self.location = location
-        self.menus = []
+        self.__location = location
+        self.__menus = []
+
+    @property
+    def menus(self):
+        return self.__menus
         
     def add_menu(self,menu):
-        self.menus.append(menu)
+        self.__menus.append(menu)
         
     def get_special_menus(self):
-        return [menu for menu in self.menus if isinstance(menu, SpecialMenu)]
+        return [menu for menu in self.__menus if isinstance(menu, SpecialMenu)]
     
 class Restaurant:
     def __init__(self,name):
-        self.name = name
-        self.branches = []
+        self.__name = name
+        self.__branches = []
         
     def add_branch(self,branch):
-        self.branches.append(branch)
+        self.__branches.append(branch)
         
     # 1. Total number of menu items
     def total_menu_items(self):
         total = 0
-        for branch in self.branches:
+        for branch in self.__branches:
             for menu in branch.menus:
                 total += menu.total_items()
         return total
@@ -74,7 +102,7 @@ class Restaurant:
     # 2. List all menu items for a particular course category
     def list_items_by_category(self, category_name):
         result = []
-        for branch in self.branches:
+        for branch in self.__branches:
             for menu in branch.menus:
                 for category in menu.categories:
                     if category.name.lower() == category_name.lower():
@@ -84,7 +112,7 @@ class Restaurant:
     # 3. List all special discount menus
     def list_special_menus(self):
         special_menus = []
-        for branch in self.branches:
+        for branch in self.__branches:
             special_menus.extend(branch.get_special_menus())
         return special_menus
     

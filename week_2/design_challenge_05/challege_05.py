@@ -12,69 +12,101 @@ Design the OO model for the above problem statement and implement the code to
 
 class Patient:
     def __init__(self, patient_id, name):
-        self.patient_id = patient_id
-        self.name = name
+        self.__patient_id = patient_id
+        self.__name = name
+
+    @property
+    def name(self):
+        return self.__name
+
+    @property
+    def patient_id(self):
+        return self.__patient_id
 
     def __str__(self):
-        return f"{self.patient_id} - {self.name}"
+        return f"{self.__patient_id} - {self.__name}"
 
 
 class Ward:
     def __init__(self, ward_name):
-        self.ward_name = ward_name
-        self.patients = []   # composition
+        self.__ward_name = ward_name
+        self.__patients = []   # composition
+
+    @property
+    def ward_name(self):
+        return self.__ward_name
 
     def admit_patient(self, patient):
-        self.patients.append(patient)
+        self.__patients.append(patient)
 
     def list_patients(self):
-        return self.patients
+        return self.__patients
 
 
 class Hospital:
     def __init__(self, name):
-        self.name = name
+        self.__name = name
+
+    @property
+    def name(self):
+        return self.__name
 
 
 class Surgeon:
     def __init__(self, surgeon_id, name, surgeon_type):
-        self.surgeon_id = surgeon_id
-        self.name = name
-        self.surgeon_type = surgeon_type   # Senior / Non-Senior
-        self.hospitals = []
-        self.operations = []
+        self.__surgeon_id = surgeon_id
+        self.__name = name
+        self.__surgeon_type = surgeon_type   # Senior / Non-Senior
+        self.__hospitals = []
+        self.__operations = []
+
+    @property
+    def name(self):
+        return self.__name
 
     def assign_hospital(self, hospital):
-        self.hospitals.append(hospital)
+        self.__hospitals.append(hospital)
 
     def perform_operation(self, operation):
-        self.operations.append(operation)
+        self.__operations.append(operation)
 
     def list_operated_patients(self):
-        return [op.patient for op in self.operations]
+        return [op.patient for op in self.__operations]
 
     def __str__(self):
-        return f"{self.surgeon_id} - {self.name} ({self.surgeon_type})"
+        return f"{self.__surgeon_id} - {self.__name} ({self.__surgeon_type})"
 
 
 class Operation:
     def __init__(self, surgeon, patient, ward):
-        self.surgeon = surgeon
-        self.patient = patient
-        self.ward = ward
+        self.__surgeon = surgeon
+        self.__patient = patient
+        self.__ward = ward
+
+    @property
+    def surgeon(self):
+        return self.__surgeon
+
+    @property
+    def patient(self):
+        return self.__patient
+
+    @property
+    def ward(self):
+        return self.__ward
 
 
 class SurgeonManagementSystem:
     def __init__(self):
-        self.operations = []
+        self.__operations = []
 
     def add_operation(self, operation):
-        self.operations.append(operation)
+        self.__operations.append(operation)
         operation.surgeon.perform_operation(operation)
 
     # 1. Total number of patients being operated
     def total_patients_operated(self):
-        return len(self.operations)
+        return len(self.__operations)
 
 if __name__ == "__main__":
     # Hospitals
