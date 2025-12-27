@@ -1,14 +1,24 @@
 -- query 01
 -- Get all the predictions.
 
-SELECT * FROM cardiodiagnosis;
+SELECT
+    cardio_id,
+    memberinfo_member_id,
+    cardioarrestdetected,
+    date
+FROM cardiodiagnosis;
 
 
 -- query 02
 -- Get all the predictions for the day. 
 -- can be = CURRENT_DATE or a specific date like '2019-01-24'
 
-SELECT * FROM cardiodiagnosis
+SELECT 
+    cardio_id,
+    memberinfo_member_id,
+    cardioarrestdetected,
+    date
+FROM cardiodiagnosis
 WHERE date::date = '2019-01-24';
 
 
@@ -16,7 +26,12 @@ WHERE date::date = '2019-01-24';
 -- Get all the predictions for the day and sort them based on the highest probability percentage at 
 -- the top. 
 
-SELECT * FROM cardiodiagnosis
+SELECT
+    cardio_id,
+    memberinfo_member_id,
+    cardioarrestdetected AS probability_percentage,
+    date AS prediction_date
+FROM cardiodiagnosis
 WHERE date::date = '2019-01-27'
 ORDER BY cardioarrestdetected DESC;
 
@@ -121,8 +136,6 @@ JOIN cardiodiagnosis c
 JOIN bloodtest b
     ON b.cardiodiagnosis_cardio_id = c.cardio_id
 WHERE m.firstname ILIKE 'Aberson' or m.lastname ILIKE 'Aberson';
-
-
 
 
 
