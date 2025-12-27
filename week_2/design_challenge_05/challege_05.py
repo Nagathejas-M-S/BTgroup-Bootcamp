@@ -164,3 +164,4 @@ if __name__ == "__main__":
     print("\nPatients admitted to ward:", ward_icu.ward_name)
     for patient in ward_icu.list_patients():
         print(patient)
+        
